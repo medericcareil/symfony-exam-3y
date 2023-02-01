@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un film ou une série{% endblock %}
+
+{% block body %}
+    <div class="w-100 d-flex justify-content-center pt-4">
+        <div class="w-50 ">
+            {{ form_start(form) }}
+
+                {{ form_row(form.videoType) }}
+                {{ form_row(form.name) }}
+                {{ form_row(form.synopsis) }}
+                {{ form_row(form.years) }}
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

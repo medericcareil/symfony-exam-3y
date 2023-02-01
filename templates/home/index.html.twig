@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    <div class="w-100 d-flex flex-column justify-content-center align-items-center pt-4">
+        
+        <h2 class="mb-4">Tous les films et séries commencant par A</h2>
+
+        {% for video in videos %}
+
+            {% if video.name starts with 'A' %}
+            
+                <div class="card mb-3" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ video.name }}</h5>
+                        <p class="card-text"><span class="fw-bold">Synopsis : </span>{{ video.synopsis }}</p>
+                        <p class="card-text"><span class="fw-bold">Année de sortie : </span>{{ video.years }}</p>
+                        <p class="card-text"><span class="fw-bold">Type : </span>{{ video.videoType.name }}</p>
+                        <a href="{{ path('video_get-by-id', { id: video.id }) }}" class="btn btn-primary" target="_blank">Voir le détail en json</a>
+                    </div>
+                </div>
+                
+            {% endif %}
+            
+        {% endfor %}
+
+        <h2 class="mb-4 mt-5">Tous les films et séries</h2>
+        
+        {% for video in videos %}
+            <div class="card mb-3" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ video.name }}</h5>
+                    <p class="card-text"><span class="fw-bold">Synopsis : </span>{{ video.synopsis }}</p>
+                    <p class="card-text"><span class="fw-bold">Année de sortie : </span>{{ video.years }}</p>
+                    <p class="card-text"><span class="fw-bold">Type : </span>{{ video.videoType.name }}</p>
+                    <a href="{{ path('video_get-by-id', { id: video.id }) }}" class="btn btn-primary" target="_blank">Voir le détail en json</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
